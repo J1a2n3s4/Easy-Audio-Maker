@@ -5,6 +5,7 @@
 #include <map>
 #include <Options.h>
 #include <iostream>
+#include <Footer.h> 
 
 
 sf::Vector2f WinSize(1000, 1000);
@@ -15,6 +16,7 @@ sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Def
 struct Settings Settings = { 100,60,".wav" };
 struct Settings LastSettings = { 100,60,".wav" };
 
+Footer Stopka
 
 Header Nagl;
 

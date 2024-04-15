@@ -1,0 +1,2 @@
+C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\x64\Debug\PointAnimator.exe
+C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\x64\Debug\PointAnimator.exe

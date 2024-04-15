@@ -1,0 +1,103 @@
+#include <SFML/Graphics.hpp>
+#include <Button.h>
+#include <string>
+#include <Header.h>
+#include <map>
+#include <Options.h>
+#include <iostream>
+
+
+sf::Vector2f WinSize(1000, 1000);
+
+sf::RenderWindow OPTSWIN(sf::VideoMode(600, 800, 32), "AudioMaker Options", sf::Style::Default);
+sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Default);
+
+struct Settings Settings = { 100,60,".wav" };
+struct Settings LastSettings = { 100,60,".wav" };
+
+
+Header Nagl;
+
+Options Opts(Settings);
+
+ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
+ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
+ButtonHeader OPT3 = ButtonHeader(sf::Vector2f(60, 20), 15, 110, "Export", &Nagl);
+ButtonHeader OPT4 = ButtonHeader(sf::Vector2f(60, 20), 15, 140, "Sound In", &Nagl);
+
+ButtonOptions Accept(sf::Vector2f(80,30),310,670,"Accept",&Opts);
+ButtonOptions Cancel(sf::Vector2f(80,30),210,670,"Cancel",&Opts);
+
+ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options", &Nagl);
+ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
+
+void process(sf::Event Ev) {
+    Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
+    if (Nagl.OptsVisible) {
+        OPT1.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+        OPT2.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+        OPT3.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+        OPT4.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+
+    }
+    OptionsButton.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+    File.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
+    if (Nagl.SettingsOpened) {
+        OPTSWIN.setVisible(true);
+        OPTSWIN.setActive(true);
+
+        sf::RenderWindow* WINWSK = &OPTSWIN;
+        struct Settings* WSKSetLast = &LastSettings;
+        struct Settings* WSKSetChanging = &Settings;
+
+        Accept.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
+        Cancel.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
+
+        Opts.Process(WINWSK, sf::Mouse::getPosition(OPTSWIN));
+    }
+    else {
+        OPTSWIN.setVisible(false);
+        OPTSWIN.setActive(false);
+    }
+}
+
+int main() {
+	while (true) {
+        Window.clear(sf::Color(40,40,40));
+        OPTSWIN.clear(sf::Color(40, 40, 40));
+        sf::Event event;
+        while (Window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                Window.close();
+            if (event.type == sf::Event::Resized) {
+                if (event.size.width < 1000) {
+                    Window.setSize(sf::Vector2u(1000, Window.getSize().y));
+                }
+
+                WinSize.x = event.size.width;
+                WinSize.y = event.size.height;
+            }
+        }
+
+        while (OPTSWIN.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                Nagl.OpenWin("Options");
+            }
+
+
+            if (event.type == sf::Event::Resized) {
+                if (event.size.width != 600) {
+                    OPTSWIN.setSize(sf::Vector2u(600, OPTSWIN.getSize().y));
+                }
+                if (event.size.height != 800) {
+                    OPTSWIN.setSize(sf::Vector2u(OPTSWIN.getSize().x, 800));
+                }
+            }
+        }
+        process(event);
+        Window.display();
+        OPTSWIN.display();
+	}
+
+	return 0;
+}

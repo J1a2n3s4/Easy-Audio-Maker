@@ -1,0 +1,4 @@
+﻿  Slider.cpp
+C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\Slider.cpp(19,28): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\Slider.cpp(58,42): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+  PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\x64\Debug\PointAnimator.exe

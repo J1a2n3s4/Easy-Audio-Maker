@@ -5,6 +5,11 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointAnimator", "PointAnimator.vcxproj", "{FC674E2C-DAE1-4BD8-B8DB-00419388808D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{41C2756B-14CB-4EA2-AD2C-E5ED00DC6948}"
+	ProjectSection(SolutionItems) = preProject
+		Save01.eams = Save01.eams
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

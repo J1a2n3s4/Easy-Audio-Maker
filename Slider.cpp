@@ -68,3 +68,8 @@ void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos)
         
     }
 }
+
+Slider::Slider()
+{
+
+}

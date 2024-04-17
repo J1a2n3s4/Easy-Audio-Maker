@@ -16,4 +16,5 @@ public:
 	int getValue();
 	Slider(std::string Name,float Procent, float xPos, float yPos,float Max);
 	void Process(sf::RenderWindow * WSK, sf::Vector2i MosuePos);
+	Slider();
 };

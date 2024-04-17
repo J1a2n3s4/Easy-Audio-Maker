@@ -6,7 +6,7 @@
 #include <Options.h>
 #include <iostream>
 #include <Footer.h> 
-
+#include <Presets.h>
 
 sf::Vector2f WinSize(1000, 1000);
 
@@ -16,7 +16,9 @@ sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Def
 struct Settings Settings = { 100,60,".wav" };
 struct Settings LastSettings = { 100,60,".wav" };
 
-Footer Stopka
+struct presets Presety[10];
+
+Footer Stopka;
 
 Header Nagl;
 
@@ -34,6 +36,7 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
+    Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
     Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
     if (Nagl.OptsVisible) {
         OPT1.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
@@ -64,6 +67,9 @@ void process(sf::Event Ev) {
 }
 
 int main() {
+    for (int i = 0; i < 10; i++) {
+        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,""};
+    }
 	while (true) {
         Window.clear(sf::Color(40,40,40));
         OPTSWIN.clear(sf::Color(40, 40, 40));
@@ -74,6 +80,9 @@ int main() {
             if (event.type == sf::Event::Resized) {
                 if (event.size.width < 1000) {
                     Window.setSize(sf::Vector2u(1000, Window.getSize().y));
+                if (event.size.height < 1000) {
+                        Window.setSize(sf::Vector2u(Window.getSize().x, 1000));
+                    }
                 }
 
                 WinSize.x = event.size.width;

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <Footer.h> 
 #include <Presets.h>
+#include <SoundBrushOpts.h>
 
 sf::Vector2f WinSize(1000, 1000);
 
@@ -18,11 +19,15 @@ struct Settings LastSettings = { 100,60,".wav" };
 
 struct presets Presety[10];
 
+
+
 Footer Stopka;
 
 Header Nagl;
 
 Options Opts(Settings);
+
+BrushOPTS brushWin;
 
 ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
 ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
@@ -36,6 +41,7 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
+    brushWin.Process(WinSize,&Window, Ev, sf::Mouse::getPosition(Window));
     Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
     Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
     if (Nagl.OptsVisible) {
@@ -58,7 +64,7 @@ void process(sf::Event Ev) {
         Accept.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
         Cancel.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
 
-        Opts.Process(WINWSK, sf::Mouse::getPosition(OPTSWIN));
+        Opts.Process(WINWSK, sf::Mouse::getPosition(OPTSWIN), WinSize);
     }
     else {
         OPTSWIN.setVisible(false);
@@ -70,6 +76,7 @@ int main() {
     for (int i = 0; i < 10; i++) {
         Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,""};
     }
+    brushWin.OpenPreset(&Presety[0]);
 	while (true) {
         Window.clear(sf::Color(40,40,40));
         OPTSWIN.clear(sf::Color(40, 40, 40));

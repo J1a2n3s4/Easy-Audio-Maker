@@ -20,7 +20,7 @@ public:
 	Options(struct Settings);
 	void Accept(struct Settings* WSKCH, struct Settings* WSKLAST, Header* HWSK);
 	void Cancel(struct Settings* WSKCH, struct Settings* WSKLAST, Header* HWSK);
-	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse);
+	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Vector2f WinSize);
 };
 
 

@@ -6,7 +6,6 @@
 
 class BrushOPTS {
 public:
-	struct presets* preset;
 	void Process(sf::Vector2f WinSize, sf::RenderWindow * WSK, sf::Event EV, sf::Vector2i Mouse);
 	BrushOPTS();
 	void SavePreset(int id);
@@ -14,13 +13,16 @@ public:
 	void OpenPreset(presets* startPreset);
 private:
 	bool open = false;
-	
 	sf::RectangleShape BG;
 	sf::Image SoundVisionEditor;
 	sf::Sprite SoundVision;
 	sf::Texture SoundVisionTexture;
 	float soundLength;
 	float Volume;
+	float Attack;
+	float Decay;
+	float Pitch;
+	float Left;
 	sf::Vector2f size;
 	int X;
 	int Y;

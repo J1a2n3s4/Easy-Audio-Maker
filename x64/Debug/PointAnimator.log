@@ -1,25 +1,8 @@
-﻿  Footer.cpp
-  Main.cpp
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Main.cpp(88,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Main.cpp(89,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-  Button.cpp
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Button.cpp(137,216): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Button.cpp(156,216): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Button.cpp(180,216): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-  Options.cpp
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Options.cpp(50,41): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  SoundBrushOpts.cpp
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SoundBrushOpts.cpp(30,17): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-  Slider.cpp
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Slider.cpp(19,24): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\Slider.cpp(58,42): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-  Generowanie kodu...
-  PointAnimator.vcxproj -> C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\x64\Debug\PointAnimator.exe
+﻿  Slider.cpp
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(8,13): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(15,12): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(29,13): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(49,29): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(75,71): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(77,29): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+  PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

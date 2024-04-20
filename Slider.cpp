@@ -2,48 +2,66 @@
 #include <iostream>
 #include <string>
 
-int Slider::getValue()
+
+void Slider::setValues(float val, float max)
+{
+    value = val;
+    Max = max;
+}
+
+
+float Slider::getValue()
 {
     return value;
 }
 
-bool click2 = false;
 
-Slider::Slider(std::string Name, float Procent,float xPos,float yPos, float Max)
+
+
+Slider::Slider(std::string Name, float val,float xPos,float yPos, float max,sf::Vector2f size)
 {
+    Max = max;
     X = xPos;
     Y = yPos;
     name.setString(Name);
     czc.loadFromFile("Assets/NunitoSans_10pt_SemiExpanded-Regular.ttf");
     name.setFont(czc);
-    value = Max*Procent/300;
+    value = val;
     name.setCharacterSize(12);
     name.setOutlineThickness(1);
     name.setOutlineColor(sf::Color(0,100,100));
     PickTexture.loadFromFile("Assets/PointerSlider.png");
     Pick.setTexture(PickTexture);
-    Pick.setOrigin(15,15);
+
+    
     Track.setFillColor(sf::Color(10,10, 10));
     Track.setOutlineThickness(2.0);
     Track.setOutlineColor(sf::Color(220, 220, 220));
-    Track.setSize(sf::Vector2f(300,10));
+    Track.setSize(size);
     Track.setPosition(X,Y);
     Track.setOrigin(0,-2.5);
     name.setPosition(X - 100, Y);
 }
 
-void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos)
+void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos, sf::Vector2f WinSize)
 {
-    Pick.setPosition(X + value * 3, Y + 5);
+    Track.setPosition(X*(1000/WinSize.x), Y * (1000 / WinSize.y));
+    Track.setOrigin(0, -2.5 * (1000 / WinSize.y));
+    name.setPosition((X - 100) * (1000 / WinSize.x), Y * (1000 / WinSize.y));
+    Pick.setPosition((X + value) * (1000 / WinSize.x),( Y + 5) * (1000 / WinSize.y));
+    Pick.setOrigin(15, 15);
+
+    name.setScale((1000 / WinSize.x), (1000 / WinSize.y));
+    Track.setScale((1000 / WinSize.x), (1000 / WinSize.y));
+    Pick.setScale((1000 / WinSize.x), (1000 / WinSize.y));
     WSK->draw(name);
-    
     WSK->draw(Track);
     WSK->draw(Pick);
     bool xCol = false;
     bool yCol = false;
     //Sprawdzenie Kolizji
-    if (MousePos.x > X) {
-        if (MousePos.x < X + 300) {
+    if (MousePos.x >= X) {
+        if (MousePos.x <= X + Track.getSize().x * 1.01) {
             xCol = true;
         }
     }
@@ -54,22 +72,17 @@ void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos)
     }
     if (xCol and yCol) {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            if (!click2) {
-                value = (MousePos.x - X) / 3.0f;
-                click2 = true;
-                std::cout << Pick.getPosition().x <<" changed!\n";
-            }
-        }
-        else {
-            click2 = false;
+                value = ((MousePos.x - X) / Track.getSize().x * 1.01) * Max;
+                if (value > Max) {
+                    value = Max;
+                }
+                std::cout << value <<" changed!\n";
         }
     }
     else {
         
     }
-}
-
-Slider::Slider()
-{
 
 }
+
+

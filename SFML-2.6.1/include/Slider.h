@@ -4,6 +4,7 @@
 
 class Slider {
 private:
+	float Max;
 	sf::Font czc;
 	sf::RectangleShape Track;
 	sf::Sprite Pick;
@@ -13,8 +14,9 @@ private:
 	float X;
 	float Y;
 public:
-	int getValue();
-	Slider(std::string Name,float Procent, float xPos, float yPos,float Max);
-	void Process(sf::RenderWindow * WSK, sf::Vector2i MosuePos);
-	Slider();
+
+	void setValues(float val, float max);
+	float getValue();
+	Slider(std::string Name,float Procent, float xPos, float yPos,float Max, sf::Vector2f size);
+	void Process(sf::RenderWindow * WSK, sf::Vector2i MousePos, sf::Vector2f WinSize);
 };

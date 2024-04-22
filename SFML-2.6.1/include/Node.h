@@ -15,5 +15,7 @@ public:
 	float Pitch;
 	float Left;
 	float Length;
+	bool played = false;
+	sf::RectangleShape Vis;
 	SoundNode(int X, int Y, std::string Sample,float Volume,float Attack,float Decay,float Left,float Length, float Pitch);
 };

@@ -11,4 +11,7 @@ SoundNode::SoundNode(int X, int Y, std::string Sample, float Vol, float Att, flo
 	Left = Le;
 	Length = len;
 	Sound.loadFromFile(Sample);
+	Vis.setSize(sf::Vector2f(Length,100));
+
+
 }

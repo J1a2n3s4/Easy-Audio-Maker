@@ -1,2 +1,4 @@
-﻿  Footer.cpp
+﻿  PlayTrack.cpp
+H:\Easy-Audio-Maker\PlayTrack.cpp(26,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+H:\Easy-Audio-Maker\PlayTrack.cpp(26,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   PointAnimator.vcxproj -> H:\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

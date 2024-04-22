@@ -6,6 +6,7 @@
 
 class PlayTrack {
 public:
+	void setBPM(int bpm);
 	PlayTrack();
 	void Start();
 	void Continue();
@@ -14,6 +15,8 @@ public:
 	void Process(sf::RenderWindow * WSK, sf::Vector2i Mouse);
 
 private:
+	int BPM = 60;
+	bool playing = false;
 	sf::RectangleShape Grid[300][6];
 	std::vector<SoundNode> Sounds;
 	sf::Sprite CurrTimeLine;

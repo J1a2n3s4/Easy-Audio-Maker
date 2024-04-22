@@ -1,8 +1,2 @@
-﻿  Slider.cpp
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(8,13): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(15,12): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(29,13): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(49,29): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(75,71): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Slider.cpp(77,29): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+﻿  Node.cpp
   PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

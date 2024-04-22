@@ -15,14 +15,14 @@ public:
 	void Start();
 	void Continue();
 	void Stop();
+	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize);
 	float time;
-	void Process(sf::RenderWindow * WSK, sf::Vector2i Mouse, sf::Time delta);
 
 private: 
 	sf::Vector2f size;
-	int BPM = 60;
+	int BPM = 300;
 	bool playing = false;
-	sf::RectangleShape Grid[300][6];
+	sf::RectangleShape Grid[300][20];
 	std::vector<SoundNode> Sounds;
 	sf::Sprite CurrTimeLine;
 	void checkCol(sf::Vector2i Mouse);

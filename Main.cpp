@@ -8,8 +8,11 @@
 #include <Footer.h> 
 #include <Presets.h>
 #include <SoundBrushOpts.h>
+#include <PlayTrack.h>
 
 sf::Vector2f WinSize(1000, 1000);
+
+sf::Clock Clock;
 
 sf::RenderWindow OPTSWIN(sf::VideoMode(600, 800, 32), "AudioMaker Options", sf::Style::Default);
 sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Default);
@@ -19,7 +22,7 @@ struct Settings LastSettings = { 100,60,".wav" };
 
 struct presets Presety[10];
 
-
+PlayTrack TimeLine(Presety[0]);
 
 Footer Stopka;
 
@@ -41,6 +44,8 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
+    sf::Time delta = Clock.restart();
+    TimeLine.Process(&Window, sf::Mouse::getPosition(Window),delta,WinSize);
     brushWin.Process(WinSize,&Window, Ev, sf::Mouse::getPosition(Window));
     Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
     Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
@@ -73,9 +78,11 @@ void process(sf::Event Ev) {
 }
 
 int main() {
+    Clock.restart();
     for (int i = 0; i < 10; i++) {
         Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,""};
     }
+    TimeLine.CurrPreset = Presety[0];
     brushWin.OpenPreset(&Presety[0]);
 	while (true) {
         Window.clear(sf::Color(40,40,40));

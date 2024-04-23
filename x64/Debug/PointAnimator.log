@@ -1,2 +1,15 @@
-﻿  Node.cpp
+﻿  PlayTrack.cpp
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(30,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(30,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(126,17): warning C4244: "inicjowanie": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244: "argument": konwersja z "T" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244:         ]
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244: "argument": konwersja z "T" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:         ]
   PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

@@ -11,10 +11,10 @@ SoundNode::SoundNode(int X, int Y, std::string Sample, float Vol, float Att, flo
 	Left = Le;
 	Length = len;
 	
-	Vis.setSize(sf::Vector2f(Length,25));
+	Vis.setSize(sf::Vector2f(Length*30,25));
 	Vis.setFillColor(sf::Color(30, 30, 90));
 	Vis.setOutlineThickness(1);
 	Vis.setOutlineColor(sf::Color(15, 15, 45));
 	Sound.loadFromFile(Sample);
-
+	Vis.setOrigin(0,25);
 }

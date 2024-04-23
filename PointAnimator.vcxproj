@@ -146,10 +146,14 @@
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="PlayTrack.cpp" />
+    <ClCompile Include="Checkbox.cpp" />
+    <ClCompile Include="EditHeader.cpp" />
     <ClCompile Include="SoundBrushOpts.cpp" />
     <ClCompile Include="Slider.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SFML-2.6.1\include\Checkbox.h" />
+    <ClInclude Include="SFML-2.6.1\include\EditHeader.h" />
     <ClInclude Include="SFML-2.6.1\include\Footer.h" />
     <ClInclude Include="SFML-2.6.1\include\Header.h" />
     <ClInclude Include="SFML-2.6.1\include\Button.h" />

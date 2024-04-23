@@ -9,8 +9,11 @@
 #include <Presets.h>
 #include <SoundBrushOpts.h>
 #include <PlayTrack.h>
+#include <EditHeader.h>
 
 sf::Vector2f WinSize(1000, 1000);
+
+editHeader HeaderEdit;
 
 sf::Clock Clock;
 
@@ -32,6 +35,8 @@ Options Opts(Settings);
 
 BrushOPTS brushWin;
 
+Slider TimelineSlider("",0,305,650,700,sf::Vector2f(700,10));
+
 ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
 ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
 ButtonHeader OPT3 = ButtonHeader(sf::Vector2f(60, 20), 15, 110, "Export", &Nagl);
@@ -45,6 +50,7 @@ ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
     sf::Time delta = Clock.restart();
+    TimelineSlider.Process(&Window, sf::Mouse::getPosition(Window), WinSize);
     TimeLine.Process(&Window, sf::Mouse::getPosition(Window),delta,WinSize);
     brushWin.Process(WinSize,&Window, Ev, sf::Mouse::getPosition(Window));
     Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
@@ -75,12 +81,14 @@ void process(sf::Event Ev) {
         OPTSWIN.setVisible(false);
         OPTSWIN.setActive(false);
     }
+
+    HeaderEdit.Process(sf::Mouse::getPosition(Window), WinSize, &Window, TimeLine.time);
 }
 
 int main() {
     Clock.restart();
     for (int i = 0; i < 10; i++) {
-        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,""};
+        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,"Assets/kick.wav"};
     }
     TimeLine.CurrPreset = Presety[0];
     brushWin.OpenPreset(&Presety[0]);

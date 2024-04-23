@@ -20,8 +20,8 @@ public:
 
 private: 
 	sf::Vector2f size;
-	int BPM = 300;
-	bool playing = false;
+	int BPM = 60;
+	bool playing = true;
 	sf::RectangleShape Grid[300][20];
 	std::vector<SoundNode> Sounds;
 	sf::Sprite CurrTimeLine;

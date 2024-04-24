@@ -12,6 +12,7 @@ public:
 	void GetPreset(); // zwracany typ do zmiany, czyli ¿e na brusha.
 	void OpenPreset(presets* startPreset);
 private:
+	sf::Text ValuesTXT[5];
 	bool open = false;
 	sf::RectangleShape BG;
 	sf::Image SoundVisionEditor;
@@ -23,6 +24,7 @@ private:
 	float Decay;
 	float Pitch;
 	float Left;
+	sf::Font czc;
 	sf::Vector2f size;
 	int X;
 	int Y;

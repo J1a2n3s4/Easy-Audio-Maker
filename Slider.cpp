@@ -48,7 +48,7 @@ void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos, sf::Vector2f W
     Track.setPosition(X*(1000/WinSize.x), Y * (1000 / WinSize.y));
     Track.setOrigin(0, -2.5 * (1000 / WinSize.y));
     name.setPosition((X - 100) * (1000 / WinSize.x), Y * (1000 / WinSize.y));
-    Pick.setPosition((X + value) * (1000 / WinSize.x),( Y + 5) * (1000 / WinSize.y));
+    Pick.setPosition((X + (value*Track.getSize().x/Max)) * (1000 / WinSize.x),( Y + 5) * (1000 / WinSize.y));
     Pick.setOrigin(15, 15);
 
     name.setScale((1000 / WinSize.x), (1000 / WinSize.y));

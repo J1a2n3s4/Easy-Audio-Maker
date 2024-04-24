@@ -35,7 +35,7 @@ Options Opts(Settings);
 
 BrushOPTS brushWin;
 
-Slider TimelineSlider("",0,305,650,700,sf::Vector2f(700,10));
+Slider TimelineSlider("",0,305,650,100,sf::Vector2f(700,10));
 
 ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
 ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
@@ -67,7 +67,7 @@ void process(sf::Event Ev) {
     if (Nagl.SettingsOpened) {
         OPTSWIN.setVisible(true);
         OPTSWIN.setActive(true);
-
+        OPTSWIN.setPosition(sf::Vector2i(1000,100));
         sf::RenderWindow* WINWSK = &OPTSWIN;
         struct Settings* WSKSetLast = &LastSettings;
         struct Settings* WSKSetChanging = &Settings;

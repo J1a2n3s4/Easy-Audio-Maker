@@ -160,6 +160,7 @@ void ButtonHeader::Process(sf::Vector2i Mouse, sf::Vector2f Win,sf::RenderWindow
 		Visual.setFillColor(sf::Color(50, 50, 50));
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
 			if (!click) {
 				WSKH->OpenWin(text.getString());
 				click = true;

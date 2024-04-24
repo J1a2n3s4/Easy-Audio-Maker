@@ -14,7 +14,6 @@ class Options {
 public:
 	sf::Text ValuesTXT[2];
 	int Volume;
-	int BPM;
 	sf::Font czc;
 	std::string Ext;
 	Options(struct Settings);

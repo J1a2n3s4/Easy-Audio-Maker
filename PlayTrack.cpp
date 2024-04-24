@@ -34,10 +34,6 @@ PlayTrack::PlayTrack(presets preset)
 
 void PlayTrack::Start()
 {
-	for (int i = 0; i < Sounds.size(); i++) {
-		Sounds.at(.played = false;
-
-	}
 	playing = true;
 	time = 0;
 }
@@ -132,7 +128,7 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 			else {
 				if (CurrPreset.type == true and !clicked) {
 					sf::Vector2f snappedVec(std::floor((Mouse.x - x)/(30/BPMSnap))*(30 / BPMSnap), std::round((Mouse.y - y) / 25));
-					Sounds.push_back(SoundNode(snappedVec.x,snappedVec.y,CurrPreset.Path,CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Left, CurrPreset.Length, snappedVec.y));
+					Sounds.push_back(SoundNode(snappedVec.x,snappedVec.y,CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Length, snappedVec.y));
 					std::cout << snappedVec.x <<" lol\n";
 					clicked = true;
 				}
@@ -151,7 +147,6 @@ void PlayTrack::checkSound()
 {
 	for (int i = 0; i < Sounds.size(); i++) {
 		if (Sounds[i].Pos/30 < time and Sounds[i].played == false) {
-			Sounds[i].Playable.play();
 			Sounds[i].played = true;
 			std::cout << "no ma grac xpp\n";
 		}

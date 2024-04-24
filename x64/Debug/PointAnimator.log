@@ -1,6 +1,24 @@
-﻿  PlayTrack.cpp
+﻿  Main.cpp
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(110,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(110,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(110,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(110,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(110,39): warning C4244:         ]
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(111,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(111,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(111,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(111,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(111,39): warning C4244:         ]
+  PlayTrack.cpp
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(30,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(30,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(38,11): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(69,12): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(83,11): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(83,38): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(83,80): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(84,11): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(85,21): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(126,17): warning C4244: "inicjowanie": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244: "argument": konwersja z "T" do "int", możliwa utrata danych
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,56): warning C4244:         with
@@ -12,4 +30,11 @@ C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warni
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:         [
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:             T=float
 C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(135,43): warning C4244:         ]
-  PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(153,15): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(153,43): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(154,12): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(155,12): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(158,15): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(158,40): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\PlayTrack.cpp(158,55): error C2676: dwuargumentowy "[": "std::list<SoundNode,std::allocator<SoundNode>>" nie definiuje tego operatora lub konwersji do typu akceptowalnego dla wstępnie zdefiniowanego operatora
+  Generowanie kodu...

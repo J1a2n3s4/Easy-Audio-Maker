@@ -14,7 +14,7 @@ Checkbox::Checkbox(std::string path, std::string name, int X, int Y)
 	text.setFont(czc);
 	text.setCharacterSize(12);
 	text.setString(name);
-	Size.x = name.length() * 12 + 4;
+	Size.x = name.length() * 12 + 16;
 	Size.y = 16;
 	Rect.setSize(Size);
 	x = X;
@@ -53,7 +53,7 @@ bool Checkbox::checkCol(sf::Vector2i Mouse)
 
 void Checkbox::Process(sf::Vector2f WinSize, sf::RenderWindow * WSK)
 {
-	text.setPosition((x + 2)* (1000 / WinSize.x), (y+2) * (1000 / WinSize.y));
+	text.setPosition((x + 14)* (1000 / WinSize.x), (y+2) * (1000 / WinSize.y));
 	Icon.setPosition((x + 2)* (1000 / WinSize.x), (y+2) * (1000 / WinSize.y));
 	Rect.setPosition(x * (1000 / WinSize.x), y * (1000 / WinSize.y));
 
@@ -69,8 +69,9 @@ void Checkbox::Process(sf::Vector2f WinSize, sf::RenderWindow * WSK)
 		Rect.setFillColor(sf::Color(10, 10, 10));
 		Rect.setOutlineThickness(1);
 	}
-	WSK->draw(Icon);
+	
 	WSK->draw(Rect);
+	WSK->draw(Icon);
 	WSK->draw(text);
 
 }

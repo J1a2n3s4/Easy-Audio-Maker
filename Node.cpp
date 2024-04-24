@@ -16,5 +16,8 @@ SoundNode::SoundNode(int X, int Y, std::string Sample, float Vol, float Att, flo
 	Vis.setOutlineThickness(1);
 	Vis.setOutlineColor(sf::Color(15, 15, 45));
 	Sound.loadFromFile(Sample);
+	Playable.setBuffer(Sound);
+	Playable.setVolume(Volume);
 	Vis.setOrigin(0,25);
+	Playable.play();
 }

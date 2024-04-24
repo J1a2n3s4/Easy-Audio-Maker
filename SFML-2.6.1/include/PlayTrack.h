@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <vector>
+#include <list>
 #include <Node.h>
 #include <Button.h>
 #include <Presets.h>
@@ -23,7 +23,7 @@ private:
 	int BPM = 60;
 	bool playing = true;
 	sf::RectangleShape Grid[300][20];
-	std::vector<SoundNode> Sounds;
+	std::list<SoundNode> Sounds;
 	sf::Sprite CurrTimeLine;
 	void checkCol(sf::Vector2i Mouse);
 	void checkSound();

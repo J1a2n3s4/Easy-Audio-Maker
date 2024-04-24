@@ -35,7 +35,7 @@ PlayTrack::PlayTrack(presets preset)
 void PlayTrack::Start()
 {
 	for (int i = 0; i < Sounds.size(); i++) {
-		Sounds[i].played = false;
+		Sounds.at(.played = false;
 
 	}
 	playing = true;

@@ -88,7 +88,7 @@ void process(sf::Event Ev) {
 int main() {
     Clock.restart();
     for (int i = 0; i < 10; i++) {
-        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,"Assets/kick.wav"};
+        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,"Assets/hihat.wav"};
     }
     TimeLine.CurrPreset = Presety[0];
     brushWin.OpenPreset(&Presety[0]);

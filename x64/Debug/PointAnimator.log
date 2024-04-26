@@ -1,3 +1,12 @@
-﻿  SoundBrushOpts.cpp
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SoundBrushOpts.cpp(32,17): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Main.cpp
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(117,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(117,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(117,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(117,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(117,39): warning C4244:         ]
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(118,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(118,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(118,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(118,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(118,39): warning C4244:         ]
   PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

@@ -8,7 +8,5 @@ struct presets {
 	float Length;
 	float AttackTime;
 	float DecayTime;
-	bool type;
-	std::string Path;
 
 };

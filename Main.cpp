@@ -10,8 +10,12 @@
 #include <SoundBrushOpts.h>
 #include <PlayTrack.h>
 #include <EditHeader.h>
+#include <Synth.h>
+
 
 sf::Vector2f WinSize(1000, 1000);
+
+SynthTab Oscs;
 
 editHeader HeaderEdit;
 
@@ -35,7 +39,7 @@ Options Opts(Settings);
 
 BrushOPTS brushWin;
 
-Slider TimelineSlider("",0,305,650,100,sf::Vector2f(700,10));
+MoveSlider TimelineSlider("",0,305,650,100);
 
 ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
 ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
@@ -49,9 +53,12 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
+    TimeLine.x = 303 - TimelineSlider.getValue()*3;
     sf::Time delta = Clock.restart();
     TimelineSlider.Process(&Window, sf::Mouse::getPosition(Window), WinSize);
-    TimeLine.Process(&Window, sf::Mouse::getPosition(Window),delta,WinSize);
+    TimeLine.Process(&Window, sf::Mouse::getPosition(Window), delta, WinSize);
+    Oscs.process(&Window, WinSize, sf::Mouse::getPosition(Window));
+    
     brushWin.Process(WinSize,&Window, Ev, sf::Mouse::getPosition(Window));
     Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
     Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
@@ -88,7 +95,7 @@ void process(sf::Event Ev) {
 int main() {
     Clock.restart();
     for (int i = 0; i < 10; i++) {
-        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0,true,"Assets/hihat.wav"};
+        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0};
     }
     TimeLine.CurrPreset = Presety[0];
     brushWin.OpenPreset(&Presety[0]);

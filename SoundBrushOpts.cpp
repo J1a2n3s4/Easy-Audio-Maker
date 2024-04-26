@@ -2,7 +2,6 @@
 #include <iostream>
 
 
-
 Slider VolumeSL("Volume: ", 100, 120, 200, 100, sf::Vector2f(100, 10));
 Slider AttackSL("Attack: ", 0.0, 120, 300, 100, sf::Vector2f(100, 10));
 Slider DecaySL("Decay: ", 0.0, 120, 400, 100, sf::Vector2f(100, 10));
@@ -40,8 +39,6 @@ void BrushOPTS::Process(sf::Vector2f WinSize, sf::RenderWindow* WSK, sf::Event E
 	ValuesTXT[3].setString(std::to_string(soundLength).substr(0, 2));
 	ValuesTXT[4].setString(std::to_string(Pitch).substr(0, 2));
 
-
-
 	if (open) {
 		VolumeSL.Process(WSK, Mouse, WinSize);
 		AttackSL.Process(WSK, Mouse, WinSize);
@@ -55,8 +52,8 @@ void BrushOPTS::Process(sf::Vector2f WinSize, sf::RenderWindow* WSK, sf::Event E
 	}
 
 	for (int i = 0; i < 5; i++) {
-		ValuesTXT[i].setPosition(250 * (1000 / WinSize.x), (i * 100 + 200) * (1000 / WinSize.x));
-		
+		ValuesTXT[i].setPosition(250 * (1000 / WinSize.x), (i * 100 + 200) * (1000 / WinSize.y));
+		ValuesTXT[i].setScale(1000 / WinSize.x, 1000 / WinSize.y);
 		WSK->draw(ValuesTXT[i]);
 	}
 }
@@ -77,7 +74,7 @@ BrushOPTS::BrushOPTS()
 	Pitch = 1.0;
 	BG.setOutlineColor(sf::Color(200, 200, 200));
 	BG.setOutlineThickness(1);
-	BG.setFillColor(sf::Color(25,25,75));
+	BG.setFillColor(sf::Color(30,30,90));
 	Sample.setLoop(true);
 	type = true;
 	Volume = 0;

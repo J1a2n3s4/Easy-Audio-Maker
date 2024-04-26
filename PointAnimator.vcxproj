@@ -148,6 +148,7 @@
     <ClCompile Include="PlayTrack.cpp" />
     <ClCompile Include="Checkbox.cpp" />
     <ClCompile Include="EditHeader.cpp" />
+    <ClCompile Include="Synth.cpp" />
     <ClCompile Include="SoundBrushOpts.cpp" />
     <ClCompile Include="Slider.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="SFML-2.6.1\include\Presets.h" />
     <ClInclude Include="SFML-2.6.1\include\Slider.h" />
     <ClInclude Include="SFML-2.6.1\include\SoundBrushOpts.h" />
+    <ClInclude Include="SFML-2.6.1\include\Synth.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

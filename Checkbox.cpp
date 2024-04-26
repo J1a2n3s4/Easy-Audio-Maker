@@ -1,10 +1,16 @@
 #include "Checkbox.h"
 #include <iostream>
 
-Checkbox Add("Assets/Plus.png", "Add", 500, 120);
-Checkbox Edit("Assets/Edit.png", "Edit", 550, 120);
-Checkbox Delete("Assets/X.png", "Delete", 600, 120);
-Checkbox Move("Assets/Move.png", "Move", 650, 120);
+Checkbox Add("Assets/Plus.png", "Add", 320, 100);
+Checkbox Edit("Assets/Edit.png", "Edit", 370, 100);
+Checkbox Delete("Assets/X.png", "Delete", 420, 100);
+Checkbox Move("Assets/Move.png", "Move", 470, 100);
+
+void Checkbox::setPosition(int xpos, int ypos)
+{
+	x = xpos;
+	y = ypos;
+}
 
 Checkbox::Checkbox(std::string path, std::string name, int X, int Y)
 {
@@ -14,7 +20,7 @@ Checkbox::Checkbox(std::string path, std::string name, int X, int Y)
 	text.setFont(czc);
 	text.setCharacterSize(12);
 	text.setString(name);
-	Size.x = name.length() * 12 + 16;
+	Size.x = name.length() * 8 + 12;
 	Size.y = 16;
 	Rect.setSize(Size);
 	x = X;

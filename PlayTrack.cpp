@@ -50,6 +50,7 @@ void PlayTrack::Stop()
 
 void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize)
 {
+	size.x = WinSize.x - 300 - x;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		Start();
 	}
@@ -126,7 +127,7 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 				clickedOnLine = true;
 			}
 			else {
-				if (CurrPreset.type == true and !clicked) {
+				if (!clicked) {
 					sf::Vector2f snappedVec(std::floor((Mouse.x - x)/(30/BPMSnap))*(30 / BPMSnap), std::round((Mouse.y - y) / 25));
 					Sounds.push_back(SoundNode(snappedVec.x,snappedVec.y,CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Length, snappedVec.y));
 					std::cout << snappedVec.x <<" lol\n";

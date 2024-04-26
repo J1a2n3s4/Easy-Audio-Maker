@@ -4,13 +4,15 @@
 
 class Checkbox {
 public:
+	void setPosition(int xpos, int ypos);
 	Checkbox(std::string path, std::string name, int X, int Y);
 	bool checkCol(sf::Vector2i Mouse);
 	void Process(sf::Vector2f WinSize,sf::RenderWindow * WSK);
+	int y;
 private:
 	bool active;
 	int x;
-	int y;
+	
 	sf::Texture tex;
 	sf::Font czc;
 	sf::RectangleShape Rect;

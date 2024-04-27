@@ -13,13 +13,13 @@ bool Button::checkCol(sf::Vector2i Mouse)
 {
 	bool xCol = false;
 	bool yCol = false;
-	if (Mouse.x > x) {
-		if (Mouse.x < x + size.x) {
+	if (Mouse.x > X) {
+		if (Mouse.x < X + size.x) {
 			xCol = true;
 		}
 	}
-	if (Mouse.y > y) {
-		if (Mouse.y < y + size.y) {
+	if (Mouse.y > Y) {
+		if (Mouse.y < Y + size.y) {
 			yCol = true;
 		}
 	}
@@ -29,6 +29,49 @@ bool Button::checkCol(sf::Vector2i Mouse)
 	else {
 		return false;
 	}
+}
+
+Button::Button(int x, int y, std::string name, sf::Vector2f Size)
+{
+	
+	czc.loadFromFile("Assets/NunitoSans_10pt_SemiExpanded-Regular.ttf");
+	text.setCharacterSize(12);
+	text.setFont(czc);
+	text.setString(name);
+	text.setOutlineColor(sf::Color(0, 100, 100));
+	text.setOutlineThickness(1);
+	X = x;
+	Y = y;
+	size = Size;
+	Visual.setFillColor(sf::Color(20, 20, 20));
+	Visual.setOutlineThickness(2.0);
+	Visual.setOutlineColor(sf::Color(220, 220, 220));
+	Visual.setSize(size);
+}
+
+Button::Button() {
+
+}
+
+void Button::Process(sf::Vector2i Mouse, sf::Vector2f Win, sf::RenderWindow* WSK)
+{
+	Visual.setPosition(X * (1000 / Win.x), Y * (1000 / Win.y));
+	Render(WSK);
+	text.setPosition(Visual.getPosition().x + Visual.getSize().x * Visual.getScale().x / 2 - text.getLocalBounds().width / 2 * Visual.getScale().x, Visual.getPosition().y + Visual.getSize().y / 2 * Visual.getScale().x - text.getLocalBounds().height / 1.5 * Visual.getScale().x);
+	text.setScale(1000 / Win.x, 1000 / Win.y);
+	Visual.setScale(1000 / Win.x, 1000 / Win.y);
+	if (checkCol(Mouse)) {
+		Visual.setFillColor(sf::Color(50, 50, 50));
+	}
+	else {
+		Visual.setFillColor(sf::Color(20, 20, 20));
+	}
+}
+
+void Button::Render(sf::RenderWindow* WSK)
+{
+	WSK->draw(Visual);
+	WSK->draw(text);
 }
 
 bool ButtonHeader::checkCol(sf::Vector2i Mouse)
@@ -75,11 +118,7 @@ bool ButtonOptions::checkCol(sf::Vector2i Mouse)
 }
 
 
-void Button::Render(sf::RenderWindow* WSK)
-{
-	WSK->draw(Visual);
-	WSK->draw(text);
-}
+
 
 void ButtonHeader::Render(sf::RenderWindow* WSK)
 {
@@ -130,25 +169,9 @@ ButtonOptions::ButtonOptions(sf::Vector2f size, int x, int y, std::string str, O
 	Visual.setOutlineThickness(2.0);
 	Visual.setOutlineColor(sf::Color(220, 220, 220));
 }
-void Button::Process(sf::Vector2i Mouse, sf::Vector2f Win,sf::RenderWindow * WSK,sf::Event Ev)
-{
-	Visual.setPosition(Button::x*1000/Win.x, Button::y*1000/Win.y);
-	Render(WSK);
-	text.setPosition(Visual.getPosition().x + Visual.getSize().x * Visual.getScale().x / 2 - text.getLocalBounds().width / 2 * Visual.getScale().x, Visual.getPosition().y + Visual.getSize().y / 2 * Visual.getScale().x - text.getLocalBounds().height / 1.5 * Visual.getScale().x);
-	text.setScale(1000 / Win.x, 1000 / Win.y);
-	Visual.setScale(1000/Win.x,1000/Win.y);
-	if (checkCol(Mouse)) {
-		Visual.setFillColor(sf::Color(50, 50, 50));
-	}
-	else {
-		Visual.setFillColor(sf::Color(20, 20, 20));
-	}
-}
 
-Button::Button()
-{
 
-}
+
 
 void ButtonHeader::Process(sf::Vector2i Mouse, sf::Vector2f Win,sf::RenderWindow * WSK,sf::Event Ev) {
 	Visual.setPosition(ButtonHeader::x * 1000 / Win.x, ButtonHeader::y * 1000 / Win.y);

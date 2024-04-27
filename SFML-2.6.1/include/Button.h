@@ -6,19 +6,20 @@
 
 class Button {
 protected:
-	int x;
-	int y;
+	int X;
+	int Y;
 	sf::Vector2f size;
-	bool checkCol(sf::Vector2i Mouse);
+	
 	void Render(sf::RenderWindow* WSK);
 
 public:
+	bool checkCol(sf::Vector2i Mouse);
 	sf::Font czc;
 	sf::Text text;
 	sf::RectangleShape Visual;
-	void Process(sf::Vector2i Mouse, sf::Vector2f Win, sf::RenderWindow* WSK, sf::Event Ev);
+	void Process(sf::Vector2i Mouse, sf::Vector2f Win, sf::RenderWindow* WSK);
+	Button(int x, int y, std::string name, sf::Vector2f size);
 	Button();
-
 };
 
 class ButtonHeader : Button {

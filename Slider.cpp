@@ -72,7 +72,7 @@ void Slider::Process(sf::RenderWindow* WSK,sf::Vector2i MousePos, sf::Vector2f W
     }
     if (xCol and yCol) {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                value = ((MousePos.x - X) / Track.getSize().x * 1.01) * Max;
+                value = ((MousePos.x - X)) * (Max / Track.getSize().x * 1.01);
                 if (value > Max) {
                     value = Max;
                 }

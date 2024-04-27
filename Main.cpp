@@ -12,6 +12,7 @@
 #include <EditHeader.h>
 #include <Synth.h>
 
+PresetsContainer FooterPresets;
 
 sf::Vector2f WinSize(1000, 1000);
 
@@ -27,7 +28,7 @@ sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Def
 struct Settings Settings = { 100,60,".wav" };
 struct Settings LastSettings = { 100,60,".wav" };
 
-struct presets Presety[10];
+struct presets Presety[11];
 
 PlayTrack TimeLine(Presety[0]);
 
@@ -53,7 +54,9 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
-    TimeLine.x = 303 - TimelineSlider.getValue()*3;
+    TimeLine.CurrPreset = Presety[FooterPresets.chosenPresetID];
+    brushWin.OpenPreset(&Presety[FooterPresets.chosenPresetID], FooterPresets.chosenPresetID);
+    TimeLine.x = 303 - TimelineSlider.getValue()*50;
     sf::Time delta = Clock.restart();
     TimelineSlider.Process(&Window, sf::Mouse::getPosition(Window), WinSize);
     TimeLine.Process(&Window, sf::Mouse::getPosition(Window), delta, WinSize);
@@ -90,15 +93,17 @@ void process(sf::Event Ev) {
     }
 
     HeaderEdit.Process(sf::Mouse::getPosition(Window), WinSize, &Window, TimeLine.time);
+
+    FooterPresets.Process(sf::Mouse::getPosition(Window),WinSize,&Window);
 }
 
 int main() {
+    Window.setPosition(sf::Vector2i(540,0));
     Clock.restart();
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 11; i++) {
         Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0};
     }
-    TimeLine.CurrPreset = Presety[0];
-    brushWin.OpenPreset(&Presety[0]);
+
 	while (true) {
         Window.clear(sf::Color(40,40,40));
         OPTSWIN.clear(sf::Color(40, 40, 40));

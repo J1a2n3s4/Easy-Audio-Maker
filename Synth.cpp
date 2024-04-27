@@ -49,7 +49,7 @@ void SynthTab::process(sf::RenderWindow * WSK, sf::Vector2f WinSize,sf::Vector2i
 					ShapeChose[1] = &Sine;
 					break;
 				case 2:
-					ShapeChose[2] =&Sine;
+					ShapeChose[2] = &Sine;
 					break;
 				case 3:
 					ShapeChose[0] = &Triangle;
@@ -96,6 +96,7 @@ SynthTab::SynthTab()
 		OscTexts[i].setString("OSCILLATOR " + std::to_string(i));
 	}
 	
+
 	Square.loadFromFile("Assets/SquareImage.png");
 	Sine.loadFromFile("Assets/SineImage.png");
 	Triangle.loadFromFile("Assets/TriangleImage.png");

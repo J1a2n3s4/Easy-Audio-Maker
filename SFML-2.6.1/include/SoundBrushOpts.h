@@ -10,8 +10,10 @@ public:
 	BrushOPTS();
 	void SavePreset(int id);
 	void GetPreset(); // zwracany typ do zmiany, czyli ¿e na brusha.
-	void OpenPreset(presets* startPreset);
+	void OpenPreset(presets* startPreset, int id);
 private:
+	int chosenID = 0;
+	sf::Text IDText;
 	sf::Text ValuesTXT[5];
 	bool open = false;
 	sf::RectangleShape BG;

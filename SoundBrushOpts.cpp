@@ -1,6 +1,8 @@
 #include "SoundBrushOpts.h"
+#include <Presets.h>
 #include <iostream>
 
+presets * CurrPreset;
 
 Slider VolumeSL("Volume: ", 100, 120, 200, 100, sf::Vector2f(100, 10));
 Slider AttackSL("Attack: ", 0.0, 120, 300, 100, sf::Vector2f(100, 10));
@@ -10,34 +12,25 @@ Slider PitchSL("Pitch: ", 1, 120, 600, 100, sf::Vector2f(100, 10));
 
 void BrushOPTS::Process(sf::Vector2f WinSize, sf::RenderWindow* WSK, sf::Event EV, sf::Vector2i Mouse)
 {
-	switch (type) {
-	case true:
-		if (!Sample.getLoop()) {
-			
-		}
-		else {
+	IDText.setString("PRESET "+std::to_string(chosenID));
 
-		}
-		break;
-	case false:
-
-		break;
-	}
-	SoundVision.setTexture(SoundVisionTexture);
-	SoundVision.setPosition(2000/WinSize.x, 40000/WinSize.y);
-	SoundVision.setScale(1000/WinSize.x, 1000 / WinSize.y);
 	BG.setScale(1000 / WinSize.x, 1000 / WinSize.y);
 	BG.setSize(sf::Vector2f(size.x, 1000000/WinSize.y));
 	BG.setPosition(X,0);
 	WSK->draw(BG);
-	WSK->draw(SoundVision);
+
+	IDText.setPosition(10,80);
+
+	WSK->draw(IDText);
 
 
-	ValuesTXT[0].setString(std::to_string(Volume).substr(0,3));
-	ValuesTXT[1].setString(std::to_string(Attack).substr(0, 2));
-	ValuesTXT[2].setString(std::to_string(Decay).substr(0, 2));
-	ValuesTXT[3].setString(std::to_string(soundLength).substr(0, 2));
-	ValuesTXT[4].setString(std::to_string(Pitch).substr(0, 2));
+
+
+	ValuesTXT[0].setString(std::to_string(Volume).substr(0,5));
+	ValuesTXT[1].setString(std::to_string(Attack).substr(0, 5));
+	ValuesTXT[2].setString(std::to_string(Decay).substr(0, 5));
+	ValuesTXT[3].setString(std::to_string(soundLength).substr(0, 5));
+	ValuesTXT[4].setString(std::to_string(Pitch).substr(0, 5));
 
 	if (open) {
 		VolumeSL.Process(WSK, Mouse, WinSize);
@@ -45,10 +38,11 @@ void BrushOPTS::Process(sf::Vector2f WinSize, sf::RenderWindow* WSK, sf::Event E
 		PitchSL.Process(WSK, Mouse, WinSize);
 		DecaySL.Process(WSK, Mouse, WinSize);
 		LengthSL.Process(WSK, Mouse, WinSize);
-		Volume = VolumeSL.getValue();
-		Attack = AttackSL.getValue();
-		Pitch = PitchSL.getValue();
-		soundLength = LengthSL.getValue();
+		CurrPreset->Volume = VolumeSL.getValue();
+		CurrPreset->AttackTime = AttackSL.getValue();
+		CurrPreset->Pitch = PitchSL.getValue();
+		CurrPreset->Length = LengthSL.getValue();
+		CurrPreset->DecayTime = DecaySL.getValue();
 	}
 
 	for (int i = 0; i < 5; i++) {
@@ -66,6 +60,9 @@ BrushOPTS::BrushOPTS()
 		ValuesTXT[i].setFont(czc);
 		ValuesTXT[i].setOrigin(0,6);
 	}
+	IDText.setCharacterSize(48);
+	IDText.setFont(czc);
+	IDText.setOrigin(0, 24);
 	Attack = 0.0;
 	Decay = 0.0;
 	Volume = 0.0;
@@ -89,22 +86,14 @@ BrushOPTS::BrushOPTS()
 
 }
 
-void BrushOPTS::SavePreset(int id)
+void BrushOPTS::OpenPreset(presets* startPreset, int id)
 {
-
-}
-
-void BrushOPTS::GetPreset()
-{
-
-}
-
-void BrushOPTS::OpenPreset(presets* startPreset)
-{
+	chosenID = id;
 	VolumeSL.setValues(startPreset->Volume, 100.0);
 	AttackSL.setValues(startPreset->AttackTime, startPreset->Length/2);
 	DecaySL.setValues(startPreset->DecayTime, startPreset->Length/2);
 	PitchSL.setValues(startPreset->Pitch, 10);
 	LengthSL.setValues(startPreset->Length, startPreset->Length);
+	CurrPreset = startPreset;
 	open = true;
 }

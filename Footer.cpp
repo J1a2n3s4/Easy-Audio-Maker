@@ -1,7 +1,6 @@
 #include "Footer.h"
 #include <iostream>
 
-
 Footer::Footer()
 {
 	BG.setFillColor(sf::Color(50, 50, 50));
@@ -13,11 +12,16 @@ Footer::Footer()
 	BG.setPosition(0,1000);
 }
 
+
+
 void Footer::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Vector2f WinSize)
 {
+	WSK->draw(BG);
+
+
 	BG.setPosition(1,WinSize.y);
 	BG.setScale(999/WinSize.x,1000/WinSize.y);
 	BG.setSize(sf::Vector2f(WinSize.x - 2, size.y*(1000/ WinSize.y)));
 	BG.setOrigin(0,size.y*(1000/WinSize.y)/2);
-	WSK->draw(BG);
+	
 }

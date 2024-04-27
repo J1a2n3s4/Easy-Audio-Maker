@@ -4,6 +4,7 @@
 
 class Footer {
 public:
+	int currPresetID = 0;
 	Footer();
 	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse,sf::Vector2f WinSize);
 private:

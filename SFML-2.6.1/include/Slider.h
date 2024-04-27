@@ -10,7 +10,7 @@ private:
 	sf::Sprite Pick;
 	sf::Texture PickTexture;
 	sf::Text name;
-	int value;
+	float value;
 	float X;
 	float Y;
 public:
@@ -29,7 +29,7 @@ private:
 	sf::Sprite Pick;
 	sf::Texture PickTexture;
 	sf::Text name;
-	int value;
+	float value;
 	float X;
 	float Y;
 public:

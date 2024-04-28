@@ -148,6 +148,7 @@
     <ClCompile Include="PlayTrack.cpp" />
     <ClCompile Include="Checkbox.cpp" />
     <ClCompile Include="EditHeader.cpp" />
+    <ClCompile Include="VolumeGraph.cpp" />
     <ClCompile Include="Synth.cpp" />
     <ClCompile Include="SoundBrushOpts.cpp" />
     <ClCompile Include="Slider.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="SFML-2.6.1\include\Footer.h" />
     <ClInclude Include="SFML-2.6.1\include\Header.h" />
     <ClInclude Include="SFML-2.6.1\include\Button.h" />
+    <ClInclude Include="SFML-2.6.1\include\VolumeGraph.h" />
     <ClInclude Include="SFML-2.6.1\include\Node.h" />
     <ClInclude Include="SFML-2.6.1\include\Options.h" />
     <ClInclude Include="SFML-2.6.1\include\PlayTrack.h" />

@@ -101,7 +101,7 @@ int main() {
     Window.setPosition(sf::Vector2i(540,0));
     Clock.restart();
     for (int i = 0; i < 11; i++) {
-        Presety[i] = { 100.0,1.0,50.0,2.0,0.0,0.0};
+        Presety[i] = { 100.0,1.0,2.0,0.0,0.0};
     }
 
 	while (true) {

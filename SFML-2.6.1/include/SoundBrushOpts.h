@@ -30,6 +30,5 @@ private:
 	sf::Vector2f size;
 	int X;
 	int Y;
-	bool type; // 0 to synth, 1 to sample
 	sf::Sound Sample;
 };

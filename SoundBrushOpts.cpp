@@ -91,8 +91,15 @@ void BrushOPTS::OpenPreset(presets* startPreset, int id)
 {
 	chosenID = id;
 	VolumeSL.setValues(startPreset->Volume, 100.0);
-	AttackSL.setValues(startPreset->AttackTime, startPreset->Length/2);
-	DecaySL.setValues(startPreset->DecayTime, startPreset->Length/2);
+	if (LengthSL.getValue() > 0) {
+		AttackSL.setValues(startPreset->AttackTime, startPreset->Length / 2);
+		DecaySL.setValues(startPreset->DecayTime, startPreset->Length / 2);
+	}
+	else {
+		AttackSL.setValues(0, 1);
+		DecaySL.setValues(0, 1);
+	}
+
 	PitchSL.setValues(startPreset->Pitch, 10);
 	LengthSL.setValues(startPreset->Length, 100);
 	CurrPreset = startPreset;

@@ -14,5 +14,6 @@ public:
 	float Length;
 	bool played = false;
 	sf::RectangleShape Vis;
+	bool checkCol(sf::Vector2i Mouse, float TrackPos);
 	SoundNode(int X, int Y, float Vol, float Att, float Dec, float len, float Pit);
 };

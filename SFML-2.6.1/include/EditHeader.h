@@ -11,6 +11,7 @@ private:
 
 public:
 	void Process(sf::Vector2i Mouse, sf::Vector2f WinSize, sf::RenderWindow* WSK, float time);
+	int get();
 	editHeader();
 };
 

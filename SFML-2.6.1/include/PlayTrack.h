@@ -17,7 +17,7 @@ public:
 	void Stop();
 	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize);
 	float time;
-
+	int EditMode;
 private: 
 	sf::Vector2f size;
 	int BPM = 60;

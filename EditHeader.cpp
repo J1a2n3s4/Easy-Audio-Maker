@@ -10,6 +10,11 @@ void editHeader::Process(sf::Vector2i Mouse, sf::Vector2f WinSize, sf::RenderWin
 	Checks.Process(Mouse, WinSize, WSK);
 }
 
+int editHeader::get()
+{
+	return Checks.chosenBoxID;
+}
+
 editHeader::editHeader()
 {
 	czc.loadFromFile("Assets/NunitoSans_10pt_SemiExpanded-Regular.ttf");

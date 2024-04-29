@@ -122,6 +122,14 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 	if (xLineCol and yLineCol) {
 		lineCol = true;
 	}
+	for (int i = 0; i < Sounds.size(); i++) {
+		if (Sounds[i].checkCol(Mouse,x)) {
+			Sounds[i].Vis.setFillColor(sf::Color(60,60,180));
+		}
+		else {
+			Sounds[i].Vis.setFillColor(sf::Color(30, 30, 90));
+		}
+	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		float BPMSnap = BPM / 60 * 4;
 		if (winCol) {
@@ -131,9 +139,22 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 			}
 			else {
 				if (!clicked) {
-					sf::Vector2f snappedVec(std::floor((Mouse.x - x)/(30/BPMSnap))*(30 / BPMSnap), std::round((Mouse.y - y) / 25));
-					Sounds.push_back(SoundNode(snappedVec.x,snappedVec.y,CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Length, snappedVec.y));
-					std::cout << snappedVec.x <<" lol\n";
+					sf::Vector2f snappedVec(std::floor((Mouse.x - x) / (30 / BPMSnap)) * (30 / BPMSnap), std::round((Mouse.y - y) / 25));
+					switch (EditMode) {
+					case 0:
+						Sounds.push_back(SoundNode(snappedVec.x, snappedVec.y, CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Length, snappedVec.y));
+						break;
+					case 2:
+						for (int i = 0; i < Sounds.size(); i++) {
+							if (Sounds[i].checkCol(Mouse,x)) {
+								Sounds.erase(Sounds.begin() + i);
+							}
+						}
+						break;
+					}
+					
+					
+
 					clicked = true;
 				}
 			}

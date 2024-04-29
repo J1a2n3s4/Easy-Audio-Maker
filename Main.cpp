@@ -54,6 +54,7 @@ ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
 
 void process(sf::Event Ev) {
+    TimeLine.EditMode = HeaderEdit.get();
     TimeLine.CurrPreset = Presety[FooterPresets.chosenPresetID];
     brushWin.OpenPreset(&Presety[FooterPresets.chosenPresetID], FooterPresets.chosenPresetID);
     TimeLine.x = 303 - TimelineSlider.getValue()*50;

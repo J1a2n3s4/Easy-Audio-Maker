@@ -1,12 +1,12 @@
 #include "Node.h"
 #include <iostream>
 
-bool SoundNode::checkCol(sf::Vector2i Mouse,float TrackPos)
+bool SoundNode::checkCol(sf::Vector2i Mouse,sf::Vector2f Win)
 {
 	bool xCol = false;
 	bool yCol = false;
-	if (Mouse.x > Vis.getPosition().x) {
-		if (Mouse.x < Vis.getPosition().x + Length*30) {
+	if (Mouse.x > Vis.getPosition().x*(Win.x/1000)) {
+		if (Mouse.x < (Vis.getPosition().x + Length*30) * (Win.x / 1000)) {
 			xCol = true;
 		}
 	}

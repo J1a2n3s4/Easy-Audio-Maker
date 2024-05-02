@@ -1,11 +1,14 @@
 #include "PlayTrack.h"
 #include <cmath>
 #include <iostream>
+#include <sound_engine.h>
 
 void PlayTrack::setBPM(int bpm)
 {
 	BPM = bpm;
 }
+
+
 
 bool clicked = false;
 bool clickedOnLine = false;
@@ -57,13 +60,12 @@ void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delt
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		Start();
 	}
-	checkCol(Mouse);
+	checkCol(Mouse,WinSize);
 	CurrTimeLine.setPosition((time*30+x) * (1000 / WinSize.x),(y-100) * (1000 / WinSize.y));
 	if (playing) {
 		time += delta.asSeconds();
 	}
-	
-	checkSound();
+
 	if (time == 0) {
 		for (int i = 0; i < Sounds.size(); i++) {
 			Sounds[i].played = false;
@@ -87,7 +89,7 @@ void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delt
 	WSK->draw(CurrTimeLine);
 }
 
-void PlayTrack::checkCol(sf::Vector2i Mouse)
+void PlayTrack::checkCol(sf::Vector2i Mouse,sf::Vector2f Win)
 {
 
 	bool xCol = false;
@@ -123,7 +125,7 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 		lineCol = true;
 	}
 	for (int i = 0; i < Sounds.size(); i++) {
-		if (Sounds[i].checkCol(Mouse,x)) {
+		if (Sounds[i].checkCol(Mouse,Win)) {
 			Sounds[i].Vis.setFillColor(sf::Color(60,60,180));
 		}
 		else {
@@ -146,7 +148,7 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 						break;
 					case 2:
 						for (int i = 0; i < Sounds.size(); i++) {
-							if (Sounds[i].checkCol(Mouse,x)) {
+							if (Sounds[i].checkCol(Mouse,Win)) {
 								Sounds.erase(Sounds.begin() + i);
 							}
 						}
@@ -168,18 +170,14 @@ void PlayTrack::checkCol(sf::Vector2i Mouse)
 
 }
 
-void PlayTrack::checkSound()
+std::vector<int> PlayTrack::checkSound()
 {
+	std::vector<int> active;
 	for (int i = 0; i < Sounds.size(); i++) {
-		if (Sounds[i].Pos/30 < time and Sounds[i].played == false) {
-			Sounds[i].played = true;
-			std::cout << "no ma grac xpp\n";
-		}
-		if (Sounds[i].Pos < time and Sounds[i].Pos+ Sounds[i].Length > time) {
-
-
+		if (Sounds[i].Pos / 30 < time and time < Sounds[i].Pos / 30 + Sounds[i].Length) {
+			active.push_back(Sounds[i].OctavePos);
 		}
 
 	}
-
+	return active;
 }

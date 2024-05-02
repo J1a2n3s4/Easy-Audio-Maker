@@ -11,12 +11,41 @@
 #include <PlayTrack.h>
 #include <EditHeader.h>
 #include <Synth.h>
+#include <sound_engine.h>
+#include <vector>
+
+preset_sound oscillator1;
+
+Keys Klawiatura[20];
+
+note Notes[20];
+
+envelope_adsr env;
 
 PresetsContainer FooterPresets;
 
 sf::Vector2f WinSize(1000, 1000);
 
 SynthTab Oscs;
+
+preset_sound test;
+
+
+
+vector<wstring> urzadzenia = olcNoiseMaker<short>::Enumerate();
+
+olcNoiseMaker<short> dzwiek(urzadzenia[0], 44100, 1, 8, 512);
+
+//sa 3 oscillatory i kazdemu mozna ustawic te 2 wartosci
+
+vector<QueInfo> kolejka;
+synth synt;
+
+atomic<double> dFrequencyOutput1 = 0.0;
+atomic<double> dFrequencyOutput2 = 0.0;
+atomic<double> dFrequencyOutput3 = 0.0;
+double dOctaveBaseFrequency = 110.0;
+double d12thRootOf2 = pow(2.0, 1.0 / 12.0);
 
 editHeader HeaderEdit;
 
@@ -52,6 +81,113 @@ ButtonOptions Cancel(sf::Vector2f(80,30),210,670,"Cancel",&Opts);
 
 ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options", &Nagl);
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
+
+
+double synth::scale(const int nNote)
+{
+    return 256 * pow(1.0594630943592952645618252949463, nNote);
+}
+
+
+double synth::translate_fq(const double dHertz)
+{
+    return dHertz * 2.0 * synth::PI;
+}
+
+double synth::osc(const double dTime, const double dHertz, int nType) {
+
+    double dFreq = synth::translate_fq(dHertz) * dTime;
+
+    switch (nType)
+    {
+    case 0:
+        return sin(dFreq);
+    case 1:
+        return sin(dFreq) > 0 ? 1.0 : -1.0;
+    case 2:
+        return asin(sin(dFreq)) * (2.0 / PI);
+    default:
+        return 0.0;
+    }
+}
+
+double MakeNoise(double dTime) {
+
+
+    double masterVolume = 0.2;
+    double dOutput = 0.0;
+    vector<int> currSounds = TimeLine.checkSound();
+        if (!currSounds.empty()) {
+            for (int i = 0; i < currSounds.size(); i++) {
+                int q = 14 - currSounds[i];
+                if (!Notes[q].active) {
+                    Notes[q].active = true;
+                    Notes[q].last_on = Notes[q].on;
+                    Notes[q].on = dTime;
+                    cout << q << endl;
+
+                };
+
+                dFrequencyOutput1 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc1.pitch);
+                dFrequencyOutput2 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc2.pitch);
+                dFrequencyOutput3 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc3.pitch);
+                if (env.amplitude(dTime, Notes[q].on, Notes[q].off) != 0) {
+                    dOutput += env.amplitude(dTime, Notes[q].on, Notes[q].off) *
+                        (
+                            +oscillator1.osc1.loudness * synt.osc(dTime, dFrequencyOutput1, oscillator1.osc1.waveShape)
+                            + oscillator1.osc2.loudness * synt.osc(dTime, dFrequencyOutput2, oscillator1.osc2.waveShape)
+                            + oscillator1.osc3.loudness * synt.osc(dTime, dFrequencyOutput3, oscillator1.osc3.waveShape)
+                            );
+                }
+            }
+
+        }
+        else {
+            for (int q = 0; q < 14; q++) {
+                if (Notes[q].active) {
+                    Notes[q].active = false;
+                    Notes[q].off = dTime;
+
+                    QueInfo temp;
+                    temp.q = q;
+                    temp.on = Notes[q].on;
+                    temp.off = Notes[q].off;
+
+                    kolejka.insert(kolejka.begin(), temp);
+
+                }
+            }
+
+        };
+    for (int i = kolejka.size() - 1; i >= 0; i--) {
+
+        if (dTime - kolejka[i].off >= env.dReleaseTime) {
+
+            kolejka.erase(kolejka.begin() + i);
+
+        }
+        else {
+            dFrequencyOutput1 = dOctaveBaseFrequency * pow(d12thRootOf2, kolejka[i].q + oscillator1.osc1.pitch);
+            dFrequencyOutput2 = dOctaveBaseFrequency * pow(d12thRootOf2, kolejka[i].q + oscillator1.osc2.pitch);
+            dFrequencyOutput3 = dOctaveBaseFrequency * pow(d12thRootOf2, kolejka[i].q + oscillator1.osc3.pitch);
+
+
+
+            if (env.amplitude(dTime, kolejka[i].on, kolejka[i].off) != 0) {
+
+                dOutput += env.amplitude(dTime, kolejka[i].on, kolejka[i].off) *
+
+                    (
+                        +oscillator1.osc1.loudness * synt.osc(dTime, dFrequencyOutput1, oscillator1.osc1.waveShape)
+                        + oscillator1.osc2.loudness * synt.osc(dTime, dFrequencyOutput2, oscillator1.osc2.waveShape)
+                        + oscillator1.osc3.loudness * synt.osc(dTime, dFrequencyOutput3, oscillator1.osc3.waveShape)
+                        );
+            }
+        }
+    }
+    return dOutput * masterVolume;
+};
+
 
 void process(sf::Event Ev) {
     TimeLine.EditMode = HeaderEdit.get();
@@ -99,6 +235,23 @@ void process(sf::Event Ev) {
 }
 
 int main() {
+
+    test.osc1.loudness = 5;
+
+    oscillator1.osc1.loudness = 1;
+    oscillator1.osc1.waveShape = 1;
+    oscillator1.osc1.pitch = 24;
+
+    oscillator1.osc2.loudness = 0;
+    oscillator1.osc2.waveShape = 1;
+
+    oscillator1.osc3.loudness = 0;
+    oscillator1.osc3.waveShape = 2;
+
+
+
+    dzwiek.SetUserFunction(MakeNoise);
+
     Window.setPosition(sf::Vector2i(540,0));
     Clock.restart();
     for (int i = 0; i < 11; i++) {

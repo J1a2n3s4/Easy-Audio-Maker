@@ -1,3 +1,39 @@
-﻿  SoundBrushOpts.cpp
-C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SoundBrushOpts.cpp(23,17): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Main.cpp
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(159,16): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(273,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(273,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(273,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(273,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(273,39): warning C4244:         ]
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(274,39): warning C4244: "=": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(274,39): warning C4244:         with
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(274,39): warning C4244:         [
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(274,39): warning C4244:             T=float
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(274,39): warning C4244:         ]
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(106,18): warning C4244: "inicjowanie": konwersja z "__int64" do "int", możliwa utrata danych
+  (kompilowanie pliku źródłowego „Main.cpp”)
+  C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(106,18):
+  kontekst tworzenia wystąpienia szablonu (najpierw najstarszy) to
+  	C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(34,61):
+  	zobacz odwołanie do kompilowanego tworzenia wystąpienia „olcNoiseMaker<short>” klasy klasa szablon
+  	C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(86,7):
+  	podczas kompilowania funkcji składowej „bool olcNoiseMaker<short>::Create(std::wstring,unsigned int,unsigned int,unsigned int,unsigned int)” klasy klasa szablon
+  		C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(78,9):
+  		zobacz pierwsze odwołanie do elementu „olcNoiseMaker<short>::Create” w „olcNoiseMaker<short>::olcNoiseMaker”
+  		C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(36,28):
+  		zobacz pierwsze odwołanie do elementu „olcNoiseMaker<short>::olcNoiseMaker” w „void __cdecl `dynamic initializer for 'dzwiek''(void)”
+  
+C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(234,4): warning C4312: "typ rzutowania": konwersja z "DWORD" na "olcNoiseMaker<short> *" jest większej wielkości
+  (kompilowanie pliku źródłowego „Main.cpp”)
+  C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(234,4):
+  kontekst tworzenia wystąpienia szablonu (najpierw najstarszy) to
+  	C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(232,23):
+  	podczas kompilowania funkcji składowej „void olcNoiseMaker<short>::waveOutProcWrap(HWAVEOUT,UINT,DWORD,DWORD,DWORD)” klasy klasa szablon
+  		C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(117,4):
+  		zobacz pierwsze odwołanie do elementu „olcNoiseMaker<short>::waveOutProcWrap” w „olcNoiseMaker<short>::Create”
+  		C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include\olcNoiseMaker.h(78,9):
+  		zobacz pierwsze odwołanie do elementu „olcNoiseMaker<short>::Create” w „olcNoiseMaker<short>::olcNoiseMaker”
+  		C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\Main.cpp(36,28):
+  		zobacz pierwsze odwołanie do elementu „olcNoiseMaker<short>::olcNoiseMaker” w „void __cdecl `dynamic initializer for 'dzwiek''(void)”
+  
   PointAnimator.vcxproj -> C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\x64\Debug\PointAnimator.exe

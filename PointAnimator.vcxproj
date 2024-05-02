@@ -71,12 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ReferencePath>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;$(ReferencePath)</ReferencePath>
-    <LibraryPath>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;H:\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;H:\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ReferencePath>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;$(ReferencePath)</ReferencePath>
-    <LibraryPath>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;H:\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <ReferencePath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;H:\Easy-Audio-Maker\SFML-2.6.1\lib;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\lib;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ReferencePath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;$(VC_ReferencesPath_x86);</ReferencePath>
+    <LibraryPath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ReferencePath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;$(VC_ReferencesPath_x86);</ReferencePath>
+    <LibraryPath>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,10 +92,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;winmm.lib;User32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,12 +109,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>User32.libsfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-system.lib;winmm.lib;User32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,12 +126,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\biala\Documents\pa_synth_project\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;winmm.lib;User32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -128,14 +143,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\J1a2n3s4\Desktop\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\include;H:\Easy-Audio-Maker\SFML-2.6.1\include;C:\Users\JedrzejLocal\source\repos\AudioMaker\pa_synth_project\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\AudioMaker\PointAnimator\SFML-2.6.1\include;C:\Users\J1a2n3s4\source\repos\PointAnimator\SFML-2.6.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>User32.libsfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-system.lib;winmm.lib;User32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\JedrzejLocal\source\repos\Easy-Audio-Maker\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -148,6 +164,7 @@
     <ClCompile Include="PlayTrack.cpp" />
     <ClCompile Include="Checkbox.cpp" />
     <ClCompile Include="EditHeader.cpp" />
+    <ClCompile Include="SFML-2.6.1\include\sound_engine.cpp" />
     <ClCompile Include="VolumeGraph.cpp" />
     <ClCompile Include="Synth.cpp" />
     <ClCompile Include="SoundBrushOpts.cpp" />

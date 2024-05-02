@@ -16,16 +16,18 @@ public:
 	void Continue();
 	void Stop();
 	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize);
+	void checkCol(sf::Vector2i Mouse, sf::Vector2f Win);
+	std::vector<int> checkSound();
+	std::vector<SoundNode> Sounds;
 	float time;
 	int EditMode;
 private: 
 	sf::Vector2f size;
-	int BPM = 60;
+	int BPM = 120;
 	bool playing = true;
 	sf::RectangleShape Grid[300][20];
-	std::vector<SoundNode> Sounds;
+
 	sf::Sprite CurrTimeLine;
-	void checkCol(sf::Vector2i Mouse);
-	void checkSound();
+	
 	sf::Texture LineTex;
 };

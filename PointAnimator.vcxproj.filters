@@ -54,6 +54,9 @@
     <ClCompile Include="VolumeGraph.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="SFML-2.6.1\include\sound_engine.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SFML-2.6.1\include\Button.h">

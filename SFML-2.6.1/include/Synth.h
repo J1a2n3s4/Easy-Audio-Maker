@@ -1,11 +1,14 @@
 #pragma once
 #include <Checkbox.h>
 #include <Button.h>
+#include <Slider.h>
 
 class SynthTab {
 public:
 	void process(sf::RenderWindow* WSK, sf::Vector2f WinSize, sf::Vector2i Mouse);
 	SynthTab();
+	int chosenOscs[3] = { 0,0,0 };
+	float volumes[3] = { 0,0,0 };
 private:
 	sf::Font czc;
 	sf::Sprite OscShapes[3];

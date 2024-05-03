@@ -16,6 +16,8 @@
 
 preset_sound oscillator1;
 
+double masterVolume;
+
 Keys Klawiatura[20];
 
 note Notes[20];
@@ -52,7 +54,7 @@ editHeader HeaderEdit;
 sf::Clock Clock;
 
 sf::RenderWindow OPTSWIN(sf::VideoMode(600, 800, 32), "AudioMaker Options", sf::Style::Default);
-sf::RenderWindow Window(sf::VideoMode(1000,1000,32),"AudioMaker", sf::Style::Default);
+sf::RenderWindow Window(sf::VideoMode(1000, 1000, 32), "AudioMaker", sf::Style::Default);
 
 struct Settings Settings = { 100,60,".wav" };
 struct Settings LastSettings = { 100,60,".wav" };
@@ -69,15 +71,15 @@ Options Opts(Settings);
 
 BrushOPTS brushWin;
 
-MoveSlider TimelineSlider("",0,305,650,100);
+MoveSlider TimelineSlider("", 0, 305, 650, 100);
 
 ButtonHeader OPT1 = ButtonHeader(sf::Vector2f(60, 20), 15, 50, "Save", &Nagl);
 ButtonHeader OPT2 = ButtonHeader(sf::Vector2f(60, 20), 15, 80, "Open", &Nagl);
 ButtonHeader OPT3 = ButtonHeader(sf::Vector2f(60, 20), 15, 110, "Export", &Nagl);
 ButtonHeader OPT4 = ButtonHeader(sf::Vector2f(60, 20), 15, 140, "Sound In", &Nagl);
 
-ButtonOptions Accept(sf::Vector2f(80,30),310,670,"Accept",&Opts);
-ButtonOptions Cancel(sf::Vector2f(80,30),210,670,"Cancel",&Opts);
+ButtonOptions Accept(sf::Vector2f(80, 30), 310, 670, "Accept", &Opts);
+ButtonOptions Cancel(sf::Vector2f(80, 30), 210, 670, "Cancel", &Opts);
 
 ButtonHeader OptionsButton = ButtonHeader(sf::Vector2f(60, 20), 85, 10, "Options", &Nagl);
 ButtonHeader File = ButtonHeader(sf::Vector2f(60, 20), 15, 10, "File", &Nagl);
@@ -110,55 +112,81 @@ double synth::osc(const double dTime, const double dHertz, int nType) {
         return 0.0;
     }
 }
+vector<SoundNode> currSounds;
+vector<SoundNode> last_currSounds = TimeLine.checkSound();;
 
 double MakeNoise(double dTime) {
 
-
-    double masterVolume = 0.2;
     double dOutput = 0.0;
-    vector<int> currSounds = TimeLine.checkSound();
-        if (!currSounds.empty()) {
-            for (int i = 0; i < currSounds.size(); i++) {
-                int q = 14 - currSounds[i];
-                if (!Notes[q].active) {
-                    Notes[q].active = true;
-                    Notes[q].last_on = Notes[q].on;
-                    Notes[q].on = dTime;
-                    cout << q << endl;
+    last_currSounds = currSounds;
+    currSounds = TimeLine.checkSound();
+    vector<SoundNode> endedSounds;
 
-                };
 
-                dFrequencyOutput1 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc1.pitch);
-                dFrequencyOutput2 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc2.pitch);
-                dFrequencyOutput3 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc3.pitch);
-                if (env.amplitude(dTime, Notes[q].on, Notes[q].off) != 0) {
-                    dOutput += env.amplitude(dTime, Notes[q].on, Notes[q].off) *
-                        (
-                            +oscillator1.osc1.loudness * synt.osc(dTime, dFrequencyOutput1, oscillator1.osc1.waveShape)
-                            + oscillator1.osc2.loudness * synt.osc(dTime, dFrequencyOutput2, oscillator1.osc2.waveShape)
-                            + oscillator1.osc3.loudness * synt.osc(dTime, dFrequencyOutput3, oscillator1.osc3.waveShape)
-                            );
-                }
-            }
+
+    for (int g = 0; g < last_currSounds.size(); g++) {
+        bool found = false;
+        for (int h = 0; h < currSounds.size(); h++) {
+            if (currSounds[h].OctavePos == last_currSounds[g].OctavePos) found = true;
+        }
+        if (!found) {
+            endedSounds.push_back(last_currSounds[g]);
+            cout << g << endl;
+        }
+    }
+
+
+
+    for (int v = 0; v < endedSounds.size(); v++) {
+        int q = 14 - endedSounds[v].OctavePos;
+        if (Notes[q].active) {
+            cout << q << endl;
+            Notes[q].active = false;
+            Notes[q].off = dTime;
+
+            QueInfo temp;
+            temp.q = q;
+            temp.on = Notes[q].on;
+            temp.off = Notes[q].off;
+
+            kolejka.insert(kolejka.begin(), temp);
 
         }
-        else {
-            for (int q = 0; q < 14; q++) {
-                if (Notes[q].active) {
-                    Notes[q].active = false;
-                    Notes[q].off = dTime;
+    };
 
-                    QueInfo temp;
-                    temp.q = q;
-                    temp.on = Notes[q].on;
-                    temp.off = Notes[q].off;
 
-                    kolejka.insert(kolejka.begin(), temp);
 
-                }
+    if (!currSounds.empty()) {
+        for (int i = 0; i < currSounds.size(); i++) {
+            int q = 14 - currSounds[i].OctavePos;
+            if (!Notes[q].active) {
+                Notes[q].active = true;
+                Notes[q].last_on = Notes[q].on;
+                Notes[q].on = dTime;
+                cout << q << endl;
+
+            };
+
+            dFrequencyOutput1 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc1.pitch);
+            dFrequencyOutput2 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc2.pitch);
+            dFrequencyOutput3 = dOctaveBaseFrequency * pow(d12thRootOf2, q + oscillator1.osc3.pitch);
+            if (env.amplitude(dTime, Notes[q].on, Notes[q].off) != 0) {
+                dOutput += env.amplitude(dTime, Notes[q].on, Notes[q].off) *
+                    (
+                        +oscillator1.osc1.loudness * synt.osc(dTime, dFrequencyOutput1, oscillator1.osc1.waveShape)
+                        + oscillator1.osc2.loudness * synt.osc(dTime, dFrequencyOutput2, oscillator1.osc2.waveShape)
+                        + oscillator1.osc3.loudness * synt.osc(dTime, dFrequencyOutput3, oscillator1.osc3.waveShape)
+                        );
             }
+        }
 
-        };
+    }
+
+
+
+
+
+
     for (int i = kolejka.size() - 1; i >= 0; i--) {
 
         if (dTime - kolejka[i].off >= env.dReleaseTime) {
@@ -190,18 +218,27 @@ double MakeNoise(double dTime) {
 
 
 void process(sf::Event Ev) {
+    masterVolume =  LastSettings.Volume/100.0/5.0;
+    TimeLine.setBPM(LastSettings.BPM);
+    oscillator1.osc1.loudness = Oscs.volumes[0];
+    oscillator1.osc2.loudness = Oscs.volumes[1];
+    oscillator1.osc3.loudness = Oscs.volumes[2];
+
+    oscillator1.osc1.waveShape = Oscs.chosenOscs[0];
+    oscillator1.osc2.waveShape = Oscs.chosenOscs[1];
+    oscillator1.osc3.waveShape = Oscs.chosenOscs[2];
     TimeLine.EditMode = HeaderEdit.get();
     TimeLine.CurrPreset = Presety[FooterPresets.chosenPresetID];
     brushWin.OpenPreset(&Presety[FooterPresets.chosenPresetID], FooterPresets.chosenPresetID);
-    TimeLine.x = 303 - TimelineSlider.getValue()*50;
+    TimeLine.x = 303 - TimelineSlider.getValue() * 50;
     sf::Time delta = Clock.restart();
     TimelineSlider.Process(&Window, sf::Mouse::getPosition(Window), WinSize);
     TimeLine.Process(&Window, sf::Mouse::getPosition(Window), delta, WinSize);
     Oscs.process(&Window, WinSize, sf::Mouse::getPosition(Window));
     
-    brushWin.Process(WinSize,&Window, Ev, sf::Mouse::getPosition(Window));
-    Stopka.Process(&Window, sf::Mouse::getPosition(Window),WinSize);
-    Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window),Ev);
+    brushWin.Process(WinSize, &Window, Ev, sf::Mouse::getPosition(Window));
+    Stopka.Process(&Window, sf::Mouse::getPosition(Window), WinSize);
+    Nagl.Process(WinSize, &Window, sf::Mouse::getPosition(Window), Ev);
     if (Nagl.OptsVisible) {
         OPT1.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
         OPT2.Process(sf::Mouse::getPosition(Window), WinSize, &Window, Ev);
@@ -214,13 +251,13 @@ void process(sf::Event Ev) {
     if (Nagl.SettingsOpened) {
         OPTSWIN.setVisible(true);
         OPTSWIN.setActive(true);
-        OPTSWIN.setPosition(sf::Vector2i(1000,100));
+        OPTSWIN.setPosition(sf::Vector2i(1000, 100));
         sf::RenderWindow* WINWSK = &OPTSWIN;
         struct Settings* WSKSetLast = &LastSettings;
         struct Settings* WSKSetChanging = &Settings;
 
-        Accept.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
-        Cancel.Process(sf::Mouse::getPosition(OPTSWIN), WinSize, WINWSK, Ev,WSKSetChanging,WSKSetLast,&Nagl);
+        Accept.Process(sf::Mouse::getPosition(OPTSWIN), sf::Vector2f(1000, 1000), WINWSK, Ev, WSKSetChanging, WSKSetLast, &Nagl);
+        Cancel.Process(sf::Mouse::getPosition(OPTSWIN), sf::Vector2f(1000, 1000), WINWSK, Ev, WSKSetChanging, WSKSetLast, &Nagl);
 
         Opts.Process(WINWSK, sf::Mouse::getPosition(OPTSWIN), WinSize);
     }
@@ -231,7 +268,7 @@ void process(sf::Event Ev) {
 
     HeaderEdit.Process(sf::Mouse::getPosition(Window), WinSize, &Window, TimeLine.time);
 
-    FooterPresets.Process(sf::Mouse::getPosition(Window),WinSize,&Window);
+    FooterPresets.Process(sf::Mouse::getPosition(Window), WinSize, &Window);
 }
 
 int main() {
@@ -244,22 +281,24 @@ int main() {
 
     oscillator1.osc2.loudness = 0;
     oscillator1.osc2.waveShape = 1;
+    oscillator1.osc2.pitch = 24;
 
     oscillator1.osc3.loudness = 0;
     oscillator1.osc3.waveShape = 2;
+    oscillator1.osc3.pitch = 24;
 
 
 
     dzwiek.SetUserFunction(MakeNoise);
 
-    Window.setPosition(sf::Vector2i(540,0));
+    Window.setPosition(sf::Vector2i(540, 0));
     Clock.restart();
     for (int i = 0; i < 11; i++) {
-        Presety[i] = { 100.0,1.0,2.0,0.0,0.0};
+        Presety[i] = { 100.0,1.0,2.0,0.0,0.0 };
     }
 
-	while (true) {
-        Window.clear(sf::Color(40,40,40));
+    while (true) {
+        Window.clear(sf::Color(40, 40, 40));
         OPTSWIN.clear(sf::Color(40, 40, 40));
         sf::Event event;
         while (Window.pollEvent(event)) {
@@ -268,7 +307,7 @@ int main() {
             if (event.type == sf::Event::Resized) {
                 if (event.size.width < 1000) {
                     Window.setSize(sf::Vector2u(1000, Window.getSize().y));
-                if (event.size.height < 1000) {
+                    if (event.size.height < 1000) {
                         Window.setSize(sf::Vector2u(Window.getSize().x, 1000));
                     }
                 }
@@ -296,7 +335,7 @@ int main() {
         process(event);
         Window.display();
         OPTSWIN.display();
-	}
+    }
 
-	return 0;
+    return 0;
 }

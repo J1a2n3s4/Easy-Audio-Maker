@@ -13,19 +13,18 @@ public:
 	void setBPM(int bpm);
 	PlayTrack(presets preset);
 	void Start();
-	void Continue();
-	void Stop();
+	void Toggle();
 	void Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize);
 	void checkCol(sf::Vector2i Mouse, sf::Vector2f Win);
-	std::vector<int> checkSound();
+	std::vector<SoundNode> checkSound();
 	std::vector<SoundNode> Sounds;
 	float time;
 	int EditMode;
 private: 
 	sf::Vector2f size;
-	int BPM = 120;
+	int BPM = 140;
 	bool playing = true;
-	sf::RectangleShape Grid[300][20];
+	sf::RectangleShape Grid[300][14];
 
 	sf::Sprite CurrTimeLine;
 	

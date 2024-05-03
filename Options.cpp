@@ -3,11 +3,13 @@
 const int ValuesLen = 2;
 
 Slider VolumeSlider("Volume: ",100,150,200,100,sf::Vector2f(300,10));
+Slider BPMSlider("BPM: ",100,150,100,500,sf::Vector2f(300,10));
 
 
 
 void Options::Accept(struct Settings* WSKCH, struct Settings* WSKLAST, Header* HWSK)
 {
+	WSKLAST->BPM = BPM;
 	WSKLAST->Extension = Ext;
 	WSKLAST->Volume = Volume;
 	HWSK->SettingsOpened = false;
@@ -16,6 +18,7 @@ void Options::Accept(struct Settings* WSKCH, struct Settings* WSKLAST, Header* H
 void Options::Cancel(struct Settings* WSKCH, struct Settings* WSKLAST, Header* HWSK)
 {
 	VolumeSlider.setValues(WSKLAST->Volume, 100);
+	VolumeSlider.setValues(WSKLAST->BPM, 500);
 	WSKCH->Extension = WSKLAST->Extension;
 	HWSK->SettingsOpened = false;
 }
@@ -23,13 +26,15 @@ void Options::Cancel(struct Settings* WSKCH, struct Settings* WSKLAST, Header* H
 void Options::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Vector2f WinSize)
 {
 	ValuesTXT[1].setString(std::to_string(VolumeSlider.getValue()));
-	VolumeSlider.Process(WSK, Mouse, WinSize);
+	ValuesTXT[0].setString(std::to_string(BPMSlider.getValue()));
+	VolumeSlider.Process(WSK, Mouse, sf::Vector2f(1000,1000));
+	BPMSlider.Process(WSK,Mouse, sf::Vector2f(1000, 1000));
 	for (int i = 0; i < ValuesLen; i++) {
 		ValuesTXT[i].setOrigin(ValuesTXT[i].getLocalBounds().width, 0);
 		WSK->draw(ValuesTXT[i]);
 	}
-	
-	
+	Volume = VolumeSlider.getValue();
+	BPM = BPMSlider.getValue();
 }
 
 

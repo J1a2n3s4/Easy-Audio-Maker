@@ -8,7 +8,7 @@ void PlayTrack::setBPM(int bpm)
 	BPM = bpm;
 }
 
-
+bool spacePress = false;
 
 bool clicked = false;
 bool clickedOnLine = false;
@@ -25,7 +25,7 @@ PlayTrack::PlayTrack(presets preset)
 	CurrTimeLine.setOrigin(26, 0);
 	time = 0.0f;
 	for (int i = 0; i < 300; i++) {
-		for (int j = 0; j < 20; j++) {
+		for (int j = 0; j < 14; j++) {
 			Grid[i][j].setFillColor(sf::Color(30, 30, 30));
 			Grid[i][j].setOutlineColor(sf::Color(100, 100, 130));
 			Grid[i][j].setOutlineThickness(1);
@@ -40,30 +40,35 @@ void PlayTrack::Start()
 	for (int i = 0; i < Sounds.size(); i++) {
 		Sounds[i].played = false;
 	}
-	playing = true;
 	time = 0;
 }
 
-void PlayTrack::Continue()
+void PlayTrack::Toggle()
 {
-	playing = true;
+	playing = !playing;
 }
 
-void PlayTrack::Stop()
-{
-	playing = false;
-}
+
 
 void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delta, sf::Vector2f WinSize)
 {
 	size.x = WinSize.x - 300 - x;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		if (!spacePress) {
+			Toggle();
+		}
+		spacePress = true;
+	}
+	else {
+		spacePress = false;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) or sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		Start();
 	}
 	checkCol(Mouse,WinSize);
 	CurrTimeLine.setPosition((time*30+x) * (1000 / WinSize.x),(y-100) * (1000 / WinSize.y));
 	if (playing) {
-		time += delta.asSeconds();
+		time += delta.asSeconds()*(BPM/60);
 	}
 
 	if (time == 0) {
@@ -73,7 +78,7 @@ void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delt
 	}
 
 	for (int i = 0; i < 300; i++) {
-		for (int j = 0; j < 20; j++) {
+		for (int j = 0; j < 14; j++) {
 			Grid[i][j].setPosition((30*i + x) * (1000 / WinSize.x),( 25 * j + y) * (1000 / WinSize.y));
 			Grid[i][j].setScale(1000 / WinSize.x, 1000 / WinSize.y);
 			WSK->draw(Grid[i][j]);
@@ -82,7 +87,7 @@ void PlayTrack::Process(sf::RenderWindow* WSK, sf::Vector2i Mouse, sf::Time delt
 	CurrTimeLine.setScale(1000 / WinSize.x, 1000 / WinSize.y);
 
 	for (int i = 0; i < Sounds.size(); i++) {
-		Sounds[i].Vis.setPosition((Sounds[i].Pos + x) * (1000 / WinSize.x), (Sounds[i].OctavePos * 25 + y) * (1000 / WinSize.y));
+		Sounds[i].Vis.setPosition((std::floor((Sounds[i].Pos + x) / 30) * 30 + 2) * (1000 / WinSize.x), (Sounds[i].OctavePos * 25 + y) * (1000 / WinSize.y));
 		Sounds[i].Vis.setScale(1000/WinSize.x,1000/WinSize.y);
 		WSK->draw(Sounds[i].Vis);
 	}
@@ -133,7 +138,6 @@ void PlayTrack::checkCol(sf::Vector2i Mouse,sf::Vector2f Win)
 		}
 	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		float BPMSnap = BPM / 60 * 4;
 		if (winCol) {
 			if (lineCol or clickedOnLine) {
 				time = Mouse.x - x;
@@ -141,7 +145,7 @@ void PlayTrack::checkCol(sf::Vector2i Mouse,sf::Vector2f Win)
 			}
 			else {
 				if (!clicked) {
-					sf::Vector2f snappedVec(std::floor((Mouse.x - x) / (30 / BPMSnap)) * (30 / BPMSnap), std::round((Mouse.y - y) / 25));
+					sf::Vector2f snappedVec(std::floor((Mouse.x - x) / (30)) * (30), std::round((Mouse.y - y) / 25));
 					switch (EditMode) {
 					case 0:
 						Sounds.push_back(SoundNode(snappedVec.x, snappedVec.y, CurrPreset.Volume, CurrPreset.AttackTime, CurrPreset.DecayTime, CurrPreset.Length, snappedVec.y));
@@ -170,12 +174,12 @@ void PlayTrack::checkCol(sf::Vector2i Mouse,sf::Vector2f Win)
 
 }
 
-std::vector<int> PlayTrack::checkSound()
+std::vector<SoundNode> PlayTrack::checkSound()
 {
-	std::vector<int> active;
+	std::vector<SoundNode> active;
 	for (int i = 0; i < Sounds.size(); i++) {
 		if (Sounds[i].Pos / 30 < time and time < Sounds[i].Pos / 30 + Sounds[i].Length) {
-			active.push_back(Sounds[i].OctavePos);
+			active.push_back(Sounds[i]);
 		}
 
 	}

@@ -13,7 +13,8 @@ struct Settings {
 class Options {
 public:
 	sf::Text ValuesTXT[2];
-	int Volume;
+	double Volume;
+	int BPM;
 	sf::Font czc;
 	std::string Ext;
 	Options(struct Settings);

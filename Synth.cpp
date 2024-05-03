@@ -1,6 +1,10 @@
 #include "Synth.h"
 #include <iostream>
 
+Slider OscSLider0("Volume 0", 100, 820, 500, 100, sf::Vector2f(100, 15));
+Slider OscSLider1("Volume 1", 0, 820, 550, 100, sf::Vector2f(100, 15));
+Slider OscSLider2("Volume 2", 0, 820, 600, 100, sf::Vector2f(100, 15));
+
 Checkbox Sine0("Assets/SineIcon.png","Sine", 710, 60);
 Checkbox Sine1("Assets/SineIcon.png", "Sine", 710, 160+22);
 Checkbox Sine2("Assets/SineIcon.png", "Sine", 710, 270+34);
@@ -31,6 +35,18 @@ void SynthTab::process(sf::RenderWindow * WSK, sf::Vector2f WinSize,sf::Vector2i
 	OscTexts[1].setPosition((WinSize.x - 205) * (1000 / WinSize.x), 185 * (1000 / WinSize.y));
 	OscTexts[2].setPosition((WinSize.x - 205) * (1000 / WinSize.x), 307 * (1000 / WinSize.y));
 
+	volumes[0] = OscSLider0.getValue()/100;
+	volumes[1] = OscSLider1.getValue()/100;
+	volumes[2] = OscSLider2.getValue()/100;
+
+	OscSLider0.setPos(WinSize.x - 150,500);
+	OscSLider1.setPos(WinSize.x - 150,550);
+	OscSLider2.setPos(WinSize.x - 150,600);
+
+	OscSLider0.Process(WSK, Mouse, WinSize);
+	OscSLider1.Process(WSK, Mouse, WinSize);
+	OscSLider2.Process(WSK, Mouse, WinSize);
+
 	for (int i = 0; i < 3; i++) {
 		OscShapes[i].setScale(1000 / WinSize.x, 1000 / WinSize.y);
 		OscTexts[i].setScale(1000 / WinSize.x, 1000 / WinSize.y);
@@ -44,30 +60,39 @@ void SynthTab::process(sf::RenderWindow * WSK, sf::Vector2f WinSize,sf::Vector2i
 				switch (i) {
 				case 0:
 					ShapeChose[0] = &Sine;
+					chosenOscs[0] = 0;
 					break;
 				case 1:
 					ShapeChose[1] = &Sine;
+					chosenOscs[1] = 0;
 					break;
 				case 2:
 					ShapeChose[2] = &Sine;
+					chosenOscs[2] = 0;
 					break;
 				case 3:
 					ShapeChose[0] = &Triangle;
+					chosenOscs[0] = 2;
 					break;
 				case 4:
 					ShapeChose[1] = &Triangle;
+					chosenOscs[1] = 2;
 					break;
 				case 5:
 					ShapeChose[2] = &Triangle;
+					chosenOscs[2] = 2;
 					break;
 				case 6:
 					ShapeChose[0] = &Square;
+					chosenOscs[0] = 1;
 					break;
 				case 7:
 					ShapeChose[1] = &Square;
+					chosenOscs[1] = 1;
 					break;
 				case 8:
 					ShapeChose[2] = &Square;
+					chosenOscs[2] = 1;
 					break;
 				}
 			}

@@ -3,6 +3,12 @@
 #include <string>
 
 
+void Slider::setPos(float x, float y)
+{
+    X = x;
+    Y = y;
+}
+
 void Slider::setValues(float val, float max)
 {
     value = val;

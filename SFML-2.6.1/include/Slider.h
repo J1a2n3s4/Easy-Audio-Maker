@@ -14,7 +14,7 @@ private:
 	float X;
 	float Y;
 public:
-
+	void setPos(float x, float y);
 	void setValues(float val, float max);
 	float getValue();
 	Slider(std::string Name,float Procent, float xPos, float yPos,float Max, sf::Vector2f size);

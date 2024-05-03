@@ -101,7 +101,7 @@ void BrushOPTS::OpenPreset(presets* startPreset, int id)
 	}
 
 	PitchSL.setValues(startPreset->Pitch, 10);
-	LengthSL.setValues(startPreset->Length, 100);
+	LengthSL.setValues(startPreset->Length, 20);
 	CurrPreset = startPreset;
 	open = true;
 }

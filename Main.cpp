@@ -272,6 +272,11 @@ void process(sf::Event Ev) {
 }
 
 int main() {
+    sf::Image icon;
+    icon.loadFromFile("Assets/EasyAudioBot.png");
+    OPTSWIN.setIcon(100, 100, icon.getPixelsPtr());
+    Window.setIcon(100, 100, icon.getPixelsPtr());
+
 
     test.osc1.loudness = 5;
 
